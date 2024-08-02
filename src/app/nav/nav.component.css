@@ -1,0 +1,65 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-right: 3rem;
+}
+
+.nav li {
+    position: relative;
+}
+
+.nav a {
+    white-space: nowrap;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3 ease;
+}
+
+.nav li:hover a {
+    color: red;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -1.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-link:hover:before {
+    visibility: visible;
+    width: 100%;
+}
+
+.logo a {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: red;
+}
+
+.logo a::before {
+    visibility: hidden;
+}
+
+.active {
+    color: red !important;
+    border-bottom: 3px red solid;
+}
