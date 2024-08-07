@@ -87,6 +87,7 @@ thead tr th {
     display: flex;
     justify-content: center;
     margin-top: 200px;
+    color: white;
 }
 
 .lds-roller,
@@ -179,18 +180,77 @@ thead tr th {
   }
 }
 
+.Rogue {
+    color: #FFF468 !important;
+    text-decoration: none;
+}
 
+.Druid {
+    color: #FF7C0A !important;
+    text-decoration: none;
+}
 
-/*.container td:hover {
-  background-color: #FFF842;
-  color: #403E10;
-  font-weight: bold;
-  
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-  
-  transition-delay: 0s;
-    transition-duration: 0.4s;
-    transition-property: all;
-  transition-timing-function: line;
-} */
+.Evoker {
+    color: #33937F !important;
+    text-decoration: none;
+}
+
+.Hunter {
+    color: #AAD372 !important;
+    text-decoration: none;
+}
+
+.Mage {
+    color: #3FC7EB !important;
+    text-decoration: none;
+}
+
+.Monk {
+    color: #00FF98 !important;
+    text-decoration: none;
+}
+
+.Paladin {
+    color: #F48CBA !important;
+    text-decoration: none;
+}
+
+.Priest {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.Shaman {
+    color: #0070DD !important;
+    text-decoration: none;
+}
+
+.Warrior {
+    color: #C69B6D !important;
+    text-decoration: none;
+}
+
+.Warlock {
+    color: #8788EE !important;
+    text-decoration: none;
+}
+
+.Death  {
+    color: #C41F3B !important;
+    text-decoration: none;
+}
+
+.Demon {
+    color: #A330C9 !important;
+    text-decoration: none;
+}
+
+#wins {
+    color: #00FF00 !important;
+    text-decoration: none;
+}
+
+#losses {
+    color: #FF0000 !important;
+    text-decoration: none;
+}
