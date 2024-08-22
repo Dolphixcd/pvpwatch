@@ -1,9 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PvPEntry } from './players.model';
-import { input } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-import { PlayerEdited } from './playeredited.model';
+import { PvPEntry } from '../models/players.model';
+import { PlayerEdited } from '../models/playersedited.model';
+import { BlizzardAuthService } from '../../blizzard-auth.service';
+
 
 @Component({
   selector: 'app-ladder-container',
@@ -20,38 +20,21 @@ export class LadderContainerComponent {
 
   ladderpage = input.required<string>();
 
+  constructor(private blizzardAuthService: BlizzardAuthService) {}
+
   sortPlayersByRank(): void {
     this.playersedited.sort((a, b) => a.rank - b.rank);
   }
-
-  async getBlizzardAccessToken(): Promise<string> {
-    try {
-      const response: any = await firstValueFrom(this.httpClient.post('https://eu.battle.net/oauth/token', new URLSearchParams({
-        grant_type: 'client_credentials'
-      }), {
-        headers: {
-          'Authorization': `Basic ${btoa('020fcd3907a3449dbe86e8bdae328f17:62tni4Z5xhRvVTk3u4RCtgubGvNbqqxq')}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }));
-  
-      return response?.access_token || '';
-    } catch (error) {
-      console.error('Error fetching Blizzard access token:', error);
-      return '';
-    }
-  }
-  
 
   ngOnInit() {
     // Variable für das Loader Symbol
     this.isFetching.set(true);
     // API Call für die PvP Ladder
-    this.getBlizzardAccessToken().then(accessToken => {
+    this.blizzardAuthService.getBlizzardAccessToken().then((accessToken: string) => {
       this.httpClient.get<PvPEntry>(`https://eu.api.blizzard.com/data/wow/pvp-season/37/pvp-leaderboard/3v3?namespace=dynamic-eu&locale=en_US&access_token=${accessToken}`).subscribe((data: any) => {
         this.players = data.entries.slice((parseInt(this.ladderpage()) * 100) - 100, parseInt(this.ladderpage()) * 100);
         this.players.forEach(element => {
-          this.httpClient.get<PlayerEdited>(`https://eu.api.blizzard.com/profile/wow/character/${element.character.realm.slug}/${element.character.name.toLowerCase()}?namespace=profile-eu&locale=en_US&access_token=EUEqpUrq2oh9Je7iT3153ykNLO1qeCGMHj`).subscribe((data: any) => {
+          this.httpClient.get<PlayerEdited>(`https://eu.api.blizzard.com/profile/wow/character/${element.character.realm.slug}/${element.character.name.toLowerCase()}?namespace=profile-eu&locale=en_US&access_token=${accessToken}`).subscribe((data: any) => {
           this.playersedited.push(
             {
               name: element.character.name,
@@ -71,29 +54,25 @@ export class LadderContainerComponent {
         });
         this.isFetching.set(false);
       });
-    }).catch(error => {
+    }).catch((error: any) => {
       console.error('Fehler beim Abrufen des Zugriffstokens:', error);
       this.isFetching.set(false);
     });
   }
 
-getLastLadderPage(): string {
-  if (parseInt(this.ladderpage()) === 1) {
-    return '1';
+  getLastLadderPage(): string {
+    if (parseInt(this.ladderpage()) === 1) {
+      return '1';
+    }
+    const nextPage = parseInt(this.ladderpage()) - 1;
+    return nextPage.toString();
   }
-  const nextPage = parseInt(this.ladderpage()) - 1;
-  return nextPage.toString();
-}
 
-getNextLadderPage(): string {
-  if (parseInt(this.ladderpage()) === 50) {
-    return '50';
+  getNextLadderPage(): string {
+    if (parseInt(this.ladderpage()) === 50) {
+      return '50';
+    }
+    const nextPage = parseInt(this.ladderpage()) + 1;
+    return nextPage.toString();
   }
-  const nextPage = parseInt(this.ladderpage()) + 1;
-  return nextPage.toString();
 }
-
-}
-
-
-

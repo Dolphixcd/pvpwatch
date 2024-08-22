@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,4 +12,6 @@ import { NavComponent } from "./nav/nav.component";
 })
 export class AppComponent {
   title = 'pvpwatch';
+
 }
+

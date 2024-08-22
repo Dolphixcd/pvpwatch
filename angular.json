@@ -11,14 +11,10 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-           },
             "outputPath": "dist/pvpwatch",
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -30,12 +26,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -62,7 +53,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "pvpwatch:build:production"
