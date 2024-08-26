@@ -28,6 +28,10 @@ export class SearchbarComponent {
       this.playerDataService.setPlayerData(data);
       console.log(data);
     });
+    this.httpClient.get(`https://eu.api.blizzard.com/profile/wow/character/${this.searchRealm}/${this.searchName.toLowerCase()}/character-media?namespace=profile-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data: any) => {
+      this.playerDataService.setPlayerRenders(data);
+      console.log(data);
+    });
   }
 
   

@@ -19,6 +19,7 @@ export class BlizzardAuthService {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }));
+      console.log('Blizzard access token:', response?.access_token);
       return response?.access_token || '';
     } catch (error) {
       console.error('Error fetching Blizzard access token:', error);
