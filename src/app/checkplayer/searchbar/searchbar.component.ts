@@ -32,6 +32,8 @@ export class SearchbarComponent {
       this.playerDataService.setPlayerRenders(data);
       console.log(data);
     });
+    this.searchName = '';
+    this.searchRealm = '';
   }
 
   

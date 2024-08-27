@@ -13,12 +13,16 @@ import { PlayerDataModel } from '../playerData.model';
 })
 export class CharContainerComponent implements OnInit {
   playerData: any;
+  playerRenders: any;
 
   constructor(private playerDataService: PlayerDataService) {}
 
   ngOnInit() {
     this.playerDataService.playerData$.subscribe(data => {
       this.playerData = data;
+    });
+    this.playerDataService.playerRenders$.subscribe(data => {
+      this.playerRenders = data;
     });
   }
 }

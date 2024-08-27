@@ -13,5 +13,8 @@ export class HeaderComponent  {
 private httpClient = inject(HttpClient);
 name = input.required<string>();
 realm = input.required<string>();
+profilePic = input.required<string>();
+itemlevel = input.required<number>();
+_class = input.required<string>();
 
 }
