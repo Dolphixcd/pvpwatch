@@ -17,6 +17,7 @@ export class SearchbarComponent {
   searchName: string = '';
   searchRealm: string = '';
   accesstoken: string = '';
+  accestokenfake: string = "";
 
   constructor(private playerDataService: PlayerDataService, private blizzardAuthService: BlizzardAuthService) {}
 
