@@ -1,5 +1,4 @@
 import { Component, input, OnChanges, SimpleChange, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HeaderComponent  {
 
-private httpClient = inject(HttpClient);
 name = input.required<string>();
 realm = input.required<string>();
 profilePic = input.required<string>();

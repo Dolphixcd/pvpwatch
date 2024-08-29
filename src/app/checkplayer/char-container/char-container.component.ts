@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { PlayerDataService } from '../../player-data.service';
 import { PlayerDataModel } from '../playerData.model';
+import { CharGeneralComponent } from "../char-general/char-general.component";
 
 
 @Component({
   selector: 'app-char-container',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, CharGeneralComponent],
   templateUrl: './char-container.component.html',
   styleUrl: './char-container.component.css'
 })
