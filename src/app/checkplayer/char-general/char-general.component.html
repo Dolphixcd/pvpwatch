@@ -1,3 +1,14 @@
-@if (race() && gender()) {
+<div class="general-container">
+<h3>Character</h3>
+@if (race() && gender() && _class()) {
+<img [src]="'../../../assets/faction-icon/' + faction() + '.svg'">
 <img [src]="'../../../assets/race-icons/' + race() + gender() + '.png'">
+<img [src]="'../../../assets/class-icons/' + _class() + '.png'">
+@if (spec() === 'Holy' || spec() === 'Protection' || spec() === 'Restoration' || spec() === 'Frost') {
+	<img [src]="'../../../assets/spec-icons/' + spec() + _class() + '.png'">
+} @else {
+<img [src]="'../../../assets/spec-icons/' + spec() + '.png'">
 }
+}
+</div>
+
