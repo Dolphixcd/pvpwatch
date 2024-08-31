@@ -13,4 +13,5 @@ export class CharGeneralComponent {
   _class = input.required<string>();
   faction = input.required<string>();
   spec = input.required<string>();
+  spec2: string = '';
 }
