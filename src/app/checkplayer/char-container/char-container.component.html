@@ -1,5 +1,5 @@
 <div class="char-container">
 <app-header [name]="playerData?.name" [realm]="playerData?.realm.name" [profilePic]="playerRenders?.assets[0].value" [itemlevel]="playerData?.equipped_item_level" [_class]="playerData?.character_class.name"></app-header>
 <app-char-general [race]="playerData?.race.id" [gender]="playerData?.gender.name" [_class]="playerData?.character_class.name" [faction]="playerData?.faction.name" [spec]="playerData?.active_spec.name"></app-char-general>
-<app-rating></app-rating>
+<app-rating [_2v2Rating]="playerPvPData2s?.rating" [_3v3Rating]="playerPvPData3s?.rating" [rbgRating]="playerPvPDataRBG.rating"></app-rating>
 </div>

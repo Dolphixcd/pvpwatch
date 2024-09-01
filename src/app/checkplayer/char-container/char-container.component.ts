@@ -15,6 +15,9 @@ import { RatingComponent } from "../rating/rating.component";
 export class CharContainerComponent implements OnInit {
   playerData: any;
   playerRenders: any;
+  playerPvPData3s: any;
+  playerPvPData2s: any;
+  playerPvPDataRBG: any;
 
   constructor(private playerDataService: PlayerDataService) {}
 
@@ -24,6 +27,15 @@ export class CharContainerComponent implements OnInit {
     });
     this.playerDataService.playerRenders$.subscribe(data => {
       this.playerRenders = data;
+    });
+    this.playerDataService.playerPvPData3s$.subscribe(data => {
+      this.playerPvPData3s = data;
+    });
+    this.playerDataService.playerPvPData2s$.subscribe(data => {
+      this.playerPvPData2s = data;
+    });
+    this.playerDataService.playerPvPDataRBG$.subscribe(data => {
+      this.playerPvPDataRBG = data;
     });
   }
 }

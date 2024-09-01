@@ -12,7 +12,7 @@ export class PlayerDataService {
   playerRenders$ = this.playerRenders.asObservable();
 
   private playerPvPData3s = new BehaviorSubject<any>(null);
-  playerPvPData$ = this.playerPvPData3s.asObservable();
+  playerPvPData3s$ = this.playerPvPData3s.asObservable();
 
   private playerPvPData2s = new BehaviorSubject<any>(null);
   playerPvPData2s$ = this.playerPvPData2s.asObservable();
