@@ -2,7 +2,14 @@
 <h3>Character</h3>
 @if (race() && gender() && _class()) {
 <img [src]="'../../../assets/faction-icon/' + faction() + '.svg'">
+@if(race() === 52 || race() === 70) {
+	<img [src]="'../../../assets/race-icons/52.png'">
+} @else if (race() === 24 || race() === 25 || race() === 26) {
+    <img [src]="'../../../assets/race-icons/25' + gender() + '.png'">
+}
+@else {
 <img [src]="'../../../assets/race-icons/' + race() + gender() + '.png'">
+}
 <img [src]="'../../../assets/class-icons/' + _class() + '.png'">
 @if (spec() === 'Holy' || spec() === 'Protection' || spec() === 'Restoration' || spec() === 'Frost') {
 	<img [src]="'../../../assets/spec-icons/' + spec() + _class() + '.png'">

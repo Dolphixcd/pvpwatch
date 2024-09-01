@@ -8,10 +8,9 @@ import { Component, input } from '@angular/core';
   styleUrl: './char-general.component.css'
 })
 export class CharGeneralComponent {
-  race = input.required<string>();
+  race = input.required<number>();
   gender = input.required<string>();
   _class = input.required<string>();
   faction = input.required<string>();
   spec = input.required<string>();
-  spec2: string = '';
 }

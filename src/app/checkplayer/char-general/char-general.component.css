@@ -5,4 +5,11 @@ img {
 
 h3 {
     color: white;
+    margin-right: 3rem;
+}
+
+.general-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
