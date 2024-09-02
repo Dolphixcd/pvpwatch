@@ -27,6 +27,13 @@ export class SearchbarComponent {
     this.httpClient.get(`https://eu.api.blizzard.com/profile/wow/character/${this.searchRealm}/${this.searchName.toLowerCase()}?namespace=profile-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data: any) => {
       this.playerDataService.setPlayerData(data);
       console.log(data);
+      this.httpClient.get(`https://eu.api.blizzard.com/data/wow/playable-class/${data.character_class.id}?namespace=static-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data2: any) => {
+        let playableSpecs: any[] = data2.specializations;
+        this.httpClient.get(`https://eu.api.blizzard.com/profile/wow/character/${this.searchRealm}/${this.searchName.toLowerCase()}/pvp-bracket/shuffle-shaman-elemental?namespace=profile-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data3: any) => {
+          this.playerDataService.setPlayerPvPDatasSolo(data3);
+          console.log(data3);
+        });
+      });
     });
     this.httpClient.get(`https://eu.api.blizzard.com/profile/wow/character/${this.searchRealm}/${this.searchName.toLowerCase()}/character-media?namespace=profile-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data: any) => {
       this.playerDataService.setPlayerRenders(data);
@@ -44,10 +51,7 @@ export class SearchbarComponent {
       this.playerDataService.setPlayerPvPDatasRBG(data);
       console.log(data);
     });
-    this.httpClient.get(`https://eu.api.blizzard.com/profile/wow/character/${this.searchRealm}/${this.searchName.toLowerCase()}/pvp-bracket/shuffle-shaman-elemental?namespace=profile-eu&locale=en_US&access_token=${this.accesstoken}`).subscribe((data: any) => {
-      this.playerDataService.setPlayerPvPDatasSolo(data);
-      console.log(data);
-    });
+    
     this.searchName = '';
     this.searchRealm = '';
   }
