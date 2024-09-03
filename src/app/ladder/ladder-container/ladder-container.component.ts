@@ -74,6 +74,7 @@ export class LadderContainerComponent {
             race: data.race.name,
           }
         );
+        this.sortPlayersByRank();
       });
     });
   }
