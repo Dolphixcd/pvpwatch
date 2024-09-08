@@ -21,7 +21,7 @@ export class LadderContainerComponent {
   isFetching = signal(false);
   ladderpage = input.required<string>();
   accesstoken: string = '';
-  ghhgpunkt: string = '';
+  ghhhgpunkt: string = '';
 
   constructor(private blizzardAuthService: BlizzardAuthService) {}
 
