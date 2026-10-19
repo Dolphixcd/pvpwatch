@@ -48,9 +48,12 @@ export class LadderContainerComponent {
    * @param accesstoken The access token for authentication.
    */
   getPlayerEntries(accesstoken: string) {
-    this.httpClient.get<PvPEntry>(`https://eu.api.blizzard.com/data/wow/pvp-season/37/pvp-leaderboard/3v3?namespace=dynamic-eu&locale=en_US&access_token=${accesstoken}`).subscribe((data: any) => {
-      this.players = data.entries.slice((parseInt(this.ladderpage()) * 100) - 100, parseInt(this.ladderpage()) * 100);    
-      this.getPlayerDetails(accesstoken);
+    this.httpClient.get(`https://eu.api.blizzard.com/data/wow/pvp-season/index?namespace=dynamic-eu&locale=en_US&access_token=${accesstoken}`).subscribe((seasons: any) => {
+      const seasonId = seasons.current_season.id;
+      this.httpClient.get<PvPEntry>(`https://eu.api.blizzard.com/data/wow/pvp-season/${seasonId}/pvp-leaderboard/3v3?namespace=dynamic-eu&locale=en_US&access_token=${accesstoken}`).subscribe((data: any) => {
+        this.players = data.entries.slice((parseInt(this.ladderpage()) * 100) - 100, parseInt(this.ladderpage()) * 100);
+        this.getPlayerDetails(accesstoken);
+      });
     });
   }
 

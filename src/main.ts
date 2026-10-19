@@ -6,7 +6,8 @@ import { HomeContainerComponent } from './app/home/home-container/home-container
 import { LadderContainerComponent } from './app/ladder/ladder-container/ladder-container.component';
 import { CheckplayerContainerComponent } from './app/checkplayer/checkplayer-container/checkplayer-container.component';
 import { NotfoundComponent } from './app/notfound/notfound.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { blizzardTokenInterceptor } from './app/blizzard-token.interceptor';
 
 
 bootstrapApplication(AppComponent, {
@@ -30,6 +31,6 @@ bootstrapApplication(AppComponent, {
       }
     ],
     withComponentInputBinding()),
-    provideHttpClient()
+    provideHttpClient(withInterceptors([blizzardTokenInterceptor]))
   ],
 }).catch((err) => console.error(err));
